@@ -6,9 +6,9 @@ Vref = 1.0  # Full-scale range: -1 to 1 V
 f_input = 1e9  # 1 GHz tone
 f_sample = 40e9  # 20 GHz sampling
 A = 1  # Input amplitude
-duration = 1e-9  # 1 ns (to match 0 to 1e-9 s)
-offset = Vref / 8  # Comparator offset: 0.25 V
-num_stages = 2  # 4-stage pipeline
+duration = 1e-9  # sim duration
+offset = 0 # Comparator offset
+num_stages = 2  # stages pipeline
 
 # Time and input signal
 Ts = 1 / f_sample
@@ -196,7 +196,7 @@ plt.plot(time * 1e9, Dout_25bit_no_red, 'g-', label=f'SNR={snr_25bit_no_red:.3f}
 plt.plot(time * 1e9, Vin, 'k--', label='Ideal Input', alpha=0.5)
 plt.xlabel('time')
 plt.ylabel('Dout')
-plt.title('Effect of Offset\n4-Stage Pipeline ADC with 2 and 2.5 bits per stage and Voffset=VR/8')
+plt.title(f"Effect of Offset\n{num_stages:.0f}-Stage Pipeline ADC with 2 and 2.5 bits per stage and Voffset= Vref*{offset/Vref:.0f}")
 plt.grid(True)
 plt.legend(loc='upper right')
 plt.show()
